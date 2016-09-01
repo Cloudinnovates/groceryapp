@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-navbar dark hideBackButton>
+      <ion-buttons left>
+      	<button (click)="cancelGroceryStore()">Cancel</button>
+      </ion-buttons>
+      <ion-title text-center>
+        {{groceryPageAction}} Grocery Store
+      </ion-title>
+      <ion-buttons end>
+      	<button (click)="saveGroceryStore()">Submit</button>
+      </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list no-lines>
+		<ion-item>
+			<ion-label stacked>Store Name</ion-label>
+			<ion-input type="text" [(ngModel)]="groceryStoreName"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label stacked>Store Description</ion-label>
+			<ion-textarea type="text" [(ngModel)]="groceryStoreDescription"></ion-textarea>
+		</ion-item>
+	</ion-list>
+	<ion-row>
+		<ion-col width-65>
+			<p>Below is a list of products this store sells</p>
+		</ion-col>
+		<ion-col width-35>
+			<button full (click)="presentGroceryProductDetailsModal_Create()"><ion-icon name="add"></ion-icon>Add Product</button>
+		</ion-col>
+	</ion-row>
+	<ion-list no-lines>
+		<ion-item-sliding *ngFor="let groceryProductData of groceryProductDataSet">
+			<ion-item>
+    			<ion-card (click)="presentGroceryProductDetailsModal_Edit(groceryProductData)">
+    				<ion-card-content>
+    					<ion-row>
+    						<ion-col width-30>{{groceryProductData.product_name}}</ion-col>
+    						<ion-col width-50>{{groceryProductData.product_description}}</ion-col>
+    						<ion-col width-20>{{groceryProductData.product_price}}</ion-col>
+						</ion-row>
+					</ion-card-content>
+				</ion-card>
+			</ion-item>
+			<ion-item-options class="sliding_buttons">
+          		<button danger (click)="deleteGroceryProduct(groceryProductData)"><ion-icon name="trash"></ion-icon>Delete</button>
+      		</ion-item-options>
+		</ion-item-sliding>
+	</ion-list>
+</ion-content>

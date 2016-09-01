@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-navbar dark>
+      <ion-title>
+        {{groceryProductPageAction}} Grocery Store Product
+      </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+	<ion-list no-lines>
+		<ion-row>
+			<ion-item>
+				<ion-label stacked>Product ID</ion-label>
+				<ion-input type="text" disabled [(ngModel)]="groceryModalProduct_id"></ion-input>
+			</ion-item>
+		</ion-row>
+		<ion-row>
+			<ion-item>
+				<ion-label stacked>Product Name</ion-label>
+				<ion-input type="text" [(ngModel)]="groceryModalProduct_name"></ion-input>
+			</ion-item>
+		</ion-row>
+		<ion-row>
+			<ion-item>
+				<ion-label stacked>Product Description</ion-label>
+				<ion-input type="text" [(ngModel)]="groceryModalProduct_description"></ion-input>
+			</ion-item>
+		</ion-row>
+		<ion-row>
+			<ion-item>
+				<ion-label stacked>Product Price</ion-label>
+				<ion-input type="text" pattern="[0-9]*" [(ngModel)]="groceryModalProduct_price"></ion-input>
+			</ion-item>
+		</ion-row>
+		<ion-row class="ion-row-form-buttons">
+			<ion-col width-50 class="ion-col-form-buttons-50-left">
+				<button light block (click)="cancelGroceryStoreProduct()">Cancel</button>
+			</ion-col>
+			<ion-col width-50 class="ion-col-form-buttons-50-right">
+				<button dark block (click)="saveGroceryStoreProduct()">Submit</button>
+			</ion-col>
+		</ion-row>
+	</ion-list>
+</ion-content>
