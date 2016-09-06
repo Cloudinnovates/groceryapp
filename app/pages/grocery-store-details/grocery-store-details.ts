@@ -43,9 +43,6 @@ export class GroceryStoreDetailsPage {
   }
 
   saveGroceryStore(){
-  	//GroceryData does not need to be re-loaded, as changes are being saved.
-  	this.groceryDataService.forceReloadData = false;
-
   	//Calculate the Save Date
   	var groceryStoreSaveDate = (new Date()).toJSON();
 
@@ -84,8 +81,6 @@ export class GroceryStoreDetailsPage {
   }
 
   cancelGroceryStore(){
-  	//Ensure the GroceryData is re-loaded, so that any saved changes are not cached.
-  	this.groceryDataService.forceReloadData = true;
   	//Pop window
     this.navCtrl.pop();
   }

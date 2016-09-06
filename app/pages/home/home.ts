@@ -22,8 +22,6 @@ export class HomePage {
   }
 
   deleteGroceryStore(groceryData){
-    //Force the GroceryData to be reloaded
-    this.groceryDataService.forceReloadData = true;
     this.groceryDataService.deleteGroceryData(groceryData);
   }
 
@@ -40,7 +38,7 @@ export class HomePage {
       groceryParamStoreDateCreated: groceryData.g_store_date_created,
       groceryParamStoreName: groceryData.g_store_name,
       groceryParamStoreDescription: groceryData.g_store_description,
-      groceryParamStoreProducts: groceryData.g_store_products
+      groceryParamStoreProducts: groceryData.g_store_products.slice() //The slice() method returns the selected elements in a new array object.
     });
   }
 }

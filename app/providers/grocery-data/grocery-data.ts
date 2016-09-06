@@ -13,9 +13,6 @@ export class GroceryDataClass {
   cloudantUsername: string;
   cloudantPassword: string;
   remote: any;
-  
-  //To start with, data does nto need to be reloaded
-  public forceReloadData = false;
  
   constructor(private http: Http) {
  
@@ -43,11 +40,8 @@ export class GroceryDataClass {
  
   getGroceryData() {
     
-    //If data exists in the cache and the data doesn't need to be re-loaded, then just return the cached data
-    if (this.data && !this.forceReloadData) {
-      //Set forceReloadData to FALSE (i.e. data does not need to be re-loaded next time)
-      this.forceReloadData = false;
-      //Return the cached data
+    //If data exists in the cache then just return the cached data
+    if (this.data) {
       return Promise.resolve(this.data);
     }
 
